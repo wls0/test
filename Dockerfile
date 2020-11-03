@@ -1,13 +1,11 @@
 FROM node:12
+WORKDIR /app
 
-RUN mkdir /home/azureuserDoc
-WORKDIR /home/azureuserDoc
-
-RUN cd /home/azureuserDoc
-COPY ./ .
+COPY . .
 
 RUN npm i -g pm2
-RUN npm i 
+RUN npm i
+
+EXPOSE 3000
 
 CMD [ "pm2-runtime", "start", "./bin/www"]
-EXPOSE 3000
